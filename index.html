@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>WePro Experience</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      height: 100vh;
+      overflow: hidden;
+      font-family: Arial, sans-serif;
+      position: relative;
+      background: #000;
+    }
+
+    /* Background (ORIGINAL IMAGE - NO EFFECTS) */
+    .bg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* Light overlay فقط لتحسين قراءة النص */
+    .overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.25);
+    }
+
+    /* Content */
+    .content {
+      position: relative;
+      z-index: 5;
+      height: 100vh;
+
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+
+      text-align: center;
+      padding: 20px;
+    }
+
+    .logo {
+      font-size: 90px;
+      font-weight: bold;
+      color: #d6a34c;
+      letter-spacing: 4px;
+    }
+
+    .brand {
+      font-size: 22px;
+      color: #d6a34c;
+      margin-bottom: 40px;
+      letter-spacing: 8px;
+    }
+
+    /* Typing */
+    .typing {
+      font-size: 82px;
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      white-space: nowrap;
+      min-height: 110px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Glow for Coming Soon */
+    .glow {
+      color: #f5d089;
+      text-shadow:
+        0 0 10px rgba(214, 163, 76, 0.7),
+        0 0 30px rgba(214, 163, 76, 0.5),
+        0 0 60px rgba(214, 163, 76, 0.3);
+      animation: glowPulse 2.5s infinite ease-in-out;
+    }
+
+    @keyframes glowPulse {
+      0%, 100% {
+        text-shadow:
+          0 0 10px rgba(214, 163, 76, 0.5),
+          0 0 30px rgba(214, 163, 76, 0.3);
+      }
+      50% {
+        text-shadow:
+          0 0 20px rgba(214, 163, 76, 0.9),
+          0 0 60px rgba(214, 163, 76, 0.6);
+      }
+    }
+
+    /* Email */
+    .email {
+      font-size: 24px;
+      color: #eee;
+      text-decoration: none;
+      border-bottom: 2px solid rgba(214, 163, 76, 0.4);
+      transition: 0.3s ease;
+    }
+
+    .email:hover {
+      color: #d6a34c;
+      border-bottom: 2px solid #d6a34c;
+      transform: scale(1.05);
+    }
+
+    .line {
+      width: 240px;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, #d6a34c, transparent);
+      margin: 40px 0;
+    }
+
+    /* ================= RESPONSIVE ================= */
+
+    @media (max-width: 1024px) {
+      .typing {
+        font-size: 60px;
+      }
+
+      .logo {
+        font-size: 70px;
+      }
+
+      .brand {
+        font-size: 18px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .typing {
+        font-size: 42px;
+      }
+
+      .logo {
+        font-size: 55px;
+      }
+
+      .brand {
+        font-size: 16px;
+        letter-spacing: 5px;
+      }
+
+      .email {
+        font-size: 18px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .typing {
+        font-size: 32px;
+        letter-spacing: 3px;
+      }
+
+      .logo {
+        font-size: 42px;
+      }
+
+      .brand {
+        font-size: 14px;
+      }
+
+      .line {
+        width: 160px;
+      }
+
+      .email {
+        font-size: 16px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Background image (original) -->
+  <img src="/bg.jpg" class="bg" />
+  <div class="overlay"></div>
+
+  <div class="content">
+
+    <div class="logo">WP</div>
+    <div class="brand">WePro Experience</div>
+
+    <div id="display" class="typing"></div>
+
+    <div class="line"></div>
+
+  </div>
+
+  <script>
+    const texts = [
+      { text: "COMING SOON", type: "glow", link: false },
+      { text: "info@weproexperience.com", type: "email", link: true }
+    ];
+
+    const display = document.getElementById("display");
+
+    let textIndex = 0;
+    let charIndex = 0;
+
+    function type() {
+      const current = texts[textIndex];
+
+      if (charIndex === 0) {
+        display.className = "typing " + current.type;
+
+        if (current.link) {
+          display.innerHTML = `<a href="mailto:${current.text}" class="email"></a>`;
+        } else {
+          display.innerHTML = "";
+        }
+      }
+
+      if (charIndex < current.text.length) {
+
+        if (current.link) {
+          const a = display.querySelector("a");
+          a.innerHTML += current.text.charAt(charIndex);
+        } else {
+          display.innerHTML += current.text.charAt(charIndex);
+        }
+
+        charIndex++;
+        setTimeout(type, 120);
+
+      } else {
+        setTimeout(erase, 2000);
+      }
+    }
+
+    function erase() {
+      const current = texts[textIndex];
+
+      if (charIndex > 0) {
+
+        if (current.link) {
+          const a = display.querySelector("a");
+          a.innerHTML = current.text.substring(0, charIndex - 1);
+        } else {
+          display.innerHTML = current.text.substring(0, charIndex - 1);
+        }
+
+        charIndex--;
+        setTimeout(erase, 60);
+
+      } else {
+        textIndex = (textIndex + 1) % texts.length;
+        setTimeout(type, 400);
+      }
+    }
+
+    window.onload = type;
+  </script>
+
+</body>
+
+</html>
