@@ -22,7 +22,7 @@
       background: #000;
     }
 
-    /* Background (ORIGINAL IMAGE - NO EFFECTS) */
+    /* Background */
     .bg {
       position: absolute;
       inset: 0;
@@ -31,7 +31,6 @@
       object-fit: cover;
     }
 
-    /* Light overlay فقط لتحسين قراءة النص */
     .overlay {
       position: absolute;
       inset: 0;
@@ -53,11 +52,22 @@
       padding: 20px;
     }
 
-    .logo {
-      font-size: 90px;
-      font-weight: bold;
-      color: #d6a34c;
-      letter-spacing: 4px;
+    /* 🔥 ICON (NEW) */
+    .logo img {
+      width: 110px;
+      height: 110px;
+      object-fit: contain;
+      filter: drop-shadow(0 0 15px #d6a34c);
+      animation: glow 2.5s infinite alternate;
+    }
+
+    @keyframes glow {
+      from {
+        filter: drop-shadow(0 0 10px #d6a34c);
+      }
+      to {
+        filter: drop-shadow(0 0 25px #d6a34c);
+      }
     }
 
     .brand {
@@ -79,7 +89,6 @@
       justify-content: center;
     }
 
-    /* Glow for Coming Soon */
     .glow {
       color: #f5d089;
       text-shadow:
@@ -102,7 +111,6 @@
       }
     }
 
-    /* Email */
     .email {
       font-size: 24px;
       color: #eee;
@@ -114,7 +122,6 @@
     .email:hover {
       color: #d6a34c;
       border-bottom: 2px solid #d6a34c;
-      transform: scale(1.05);
     }
 
     .line {
@@ -124,61 +131,19 @@
       margin: 40px 0;
     }
 
-    /* ================= RESPONSIVE ================= */
-
-    @media (max-width: 1024px) {
-      .typing {
-        font-size: 60px;
-      }
-
-      .logo {
-        font-size: 70px;
-      }
-
-      .brand {
-        font-size: 18px;
-      }
-    }
-
+    /* Responsive */
     @media (max-width: 768px) {
       .typing {
         font-size: 42px;
       }
 
-      .logo {
-        font-size: 55px;
-      }
-
-      .brand {
-        font-size: 16px;
-        letter-spacing: 5px;
-      }
-
       .email {
         font-size: 18px;
       }
-    }
 
-    @media (max-width: 480px) {
-      .typing {
-        font-size: 32px;
-        letter-spacing: 3px;
-      }
-
-      .logo {
-        font-size: 42px;
-      }
-
-      .brand {
-        font-size: 14px;
-      }
-
-      .line {
-        width: 160px;
-      }
-
-      .email {
-        font-size: 16px;
+      .logo img {
+        width: 80px;
+        height: 80px;
       }
     }
   </style>
@@ -186,13 +151,17 @@
 
 <body>
 
-  <!-- Background image (original) -->
+  <!-- Background -->
   <img src="/bg.jpg" class="bg" />
   <div class="overlay"></div>
 
   <div class="content">
 
-    <div class="logo">WP</div>
+    <!-- 🔥 ICON بدل WP -->
+    <div class="logo">
+      <img src="icon.png" alt="WePro Icon">
+    </div>
+
     <div class="brand">WePro Experience</div>
 
     <div id="display" class="typing"></div>
