@@ -52,29 +52,36 @@
       padding: 20px;
     }
 
-    /* 🔥 ICON (NEW) */
+    /* 🔥 ULTRA HERO LOGO */
     .logo img {
-      width: 110px;
-      height: 110px;
+      width: min(520px, 90vw);
+      height: auto;
       object-fit: contain;
-      filter: drop-shadow(0 0 15px #d6a34c);
-      animation: glow 2.5s infinite alternate;
+
+      filter: drop-shadow(0 0 50px #d6a34c);
+      animation:
+        glow 2.5s infinite alternate,
+        float 4s ease-in-out infinite;
     }
 
+    /* Glow animation */
     @keyframes glow {
       from {
-        filter: drop-shadow(0 0 10px #d6a34c);
+        filter: drop-shadow(0 0 20px #d6a34c);
       }
       to {
-        filter: drop-shadow(0 0 25px #d6a34c);
+        filter: drop-shadow(0 0 90px #d6a34c);
       }
     }
 
-    .brand {
-      font-size: 22px;
-      color: #d6a34c;
-      margin-bottom: 40px;
-      letter-spacing: 8px;
+    /* Floating animation */
+    @keyframes float {
+      0%, 100% {
+        transform: translateY(0px);
+      }
+      50% {
+        transform: translateY(-15px);
+      }
     }
 
     /* Typing */
@@ -111,6 +118,7 @@
       }
     }
 
+    /* Email */
     .email {
       font-size: 24px;
       color: #eee;
@@ -131,8 +139,13 @@
       margin: 40px 0;
     }
 
-    /* Responsive */
+    /* ================= RESPONSIVE ================= */
+
     @media (max-width: 768px) {
+      .logo img {
+        width: min(320px, 80vw);
+      }
+
       .typing {
         font-size: 42px;
       }
@@ -140,10 +153,19 @@
       .email {
         font-size: 18px;
       }
+    }
 
+    @media (max-width: 480px) {
       .logo img {
-        width: 80px;
-        height: 80px;
+        width: min(240px, 85vw);
+      }
+
+      .typing {
+        font-size: 32px;
+      }
+
+      .line {
+        width: 160px;
       }
     }
   </style>
@@ -157,13 +179,12 @@
 
   <div class="content">
 
-    <!-- 🔥 ICON بدل WP -->
+    <!-- 🔥 HERO LOGO -->
     <div class="logo">
       <img src="icon.png" alt="WePro Icon">
     </div>
 
-    <div class="brand">WePro Experience</div>
-
+    <!-- Typing -->
     <div id="display" class="typing"></div>
 
     <div class="line"></div>
