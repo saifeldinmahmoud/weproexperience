@@ -52,13 +52,13 @@
       padding: 20px;
     }
 
-    /* 🔥 ULTRA HERO LOGO */
+    /* 🔥 HERO LOGO */
     .logo img {
-      width: min(520px, 90vw);
+      width: min(360px, 70vw);
       height: auto;
       object-fit: contain;
 
-      filter: drop-shadow(0 0 50px #d6a34c);
+      filter: drop-shadow(0 0 40px #d6a34c);
       animation:
         glow 2.5s infinite alternate,
         float 4s ease-in-out infinite;
@@ -67,20 +67,24 @@
     /* Glow animation */
     @keyframes glow {
       from {
-        filter: drop-shadow(0 0 20px #d6a34c);
+        filter: drop-shadow(0 0 15px #d6a34c);
       }
+
       to {
-        filter: drop-shadow(0 0 90px #d6a34c);
+        filter: drop-shadow(0 0 70px #d6a34c);
       }
     }
 
     /* Floating animation */
     @keyframes float {
-      0%, 100% {
+
+      0%,
+      100% {
         transform: translateY(0px);
       }
+
       50% {
-        transform: translateY(-15px);
+        transform: translateY(-12px);
       }
     }
 
@@ -106,11 +110,14 @@
     }
 
     @keyframes glowPulse {
-      0%, 100% {
+
+      0%,
+      100% {
         text-shadow:
           0 0 10px rgba(214, 163, 76, 0.5),
           0 0 30px rgba(214, 163, 76, 0.3);
       }
+
       50% {
         text-shadow:
           0 0 20px rgba(214, 163, 76, 0.9),
@@ -143,7 +150,7 @@
 
     @media (max-width: 768px) {
       .logo img {
-        width: min(320px, 80vw);
+        width: min(260px, 70vw);
       }
 
       .typing {
@@ -157,7 +164,7 @@
 
     @media (max-width: 480px) {
       .logo img {
-        width: min(240px, 85vw);
+        width: min(200px, 75vw);
       }
 
       .typing {
